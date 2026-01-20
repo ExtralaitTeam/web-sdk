@@ -7,4 +7,6 @@ class BaseSoapSettings(BaseSDKSettings):
     """Base settings class for soap client."""
 
     service_name: str | None = None
+    """The name of wsdl service."""
     port_name: str | None = None
+    """The name of wsdl port."""

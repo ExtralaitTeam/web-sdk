@@ -3,9 +3,9 @@ from typing import Annotated
 
 from typing_extensions import Unpack
 
-from web_sdk.core.backends.requests.rest.kwargs import RestRequestsKwargsWithSettings
-from web_sdk.core.fields import APath, ASetting, Body, Param, Path
-from web_sdk.sdks.rest import Client, ClientService
+from web_sdk.core.backends.requests.soap.kwargs import SoapRequestsKwargsWithSettings
+from web_sdk.core.fields import AFile, ASetting, Body
+from web_sdk.sdks.soap import Client, ClientService, SoapFile
 
 from . import schemas
 from .methods import OrdersService, PaymentsService
@@ -22,27 +22,32 @@ class FooClientService(ClientService[BaseFooClient], client=BaseFooClient):
     """This class need for isolate subclasses registering in user class."""
 
 
+# For soap client Body is base field type
 class PaymentsClientService(FooClientService):
     @PaymentsService.get
     def get(
         self,
         # ALike aliases (shortcut for Annotated[T, Field])
-        payment_id: APath[int],
+        payment_id: int,
         # Unpack with TypedDict
-        **kwargs: Unpack[RestRequestsKwargsWithSettings],
+        **kwargs: Unpack[SoapRequestsKwargsWithSettings],
     ) -> schemas.GetPaymentResponse: ...
 
-    @PaymentsService.make(timeout=5)
+    @PaymentsService.make
     def make(
         self,
         # Annotated[T, Field] like annotations
-        order_id: Annotated[str, Path],
+        order_id: Annotated[str, Body],
         # Other variant with Field call
         amount: Annotated[Decimal, Body(ge=Decimal("0"))],
         # Field as default value. You can also use a field without
         # specifying a default value, then the field will be
-        # required (arg: bool = Param) or (arg: bool = Param()).
-        immediately: bool | None = Param(None),  # type: ignore
+        # required (arg: bool = Body) or (arg: bool = Body()).
+        immediately: bool | None = Body(None),  # type: ignore
+        # Send single file with request
+        payment_file: AFile[SoapFile | None] = None,
+        # Send multiple files with request
+        other_files: AFile[list[SoapFile] | None] = None,
         # Using settings to change Client.make_request behavior
         raise_exception: ASetting[bool | None] = None,
     ) -> schemas.MakePaymentResponse: ...
@@ -50,14 +55,12 @@ class PaymentsClientService(FooClientService):
 
 class OrdersClientService(FooClientService):
     @OrdersService.get
-    def get(self, order_id: APath[int]) -> schemas.GetOrderResponse: ...
+    def get(self, order_id: int) -> schemas.GetOrderResponse: ...
 
     @OrdersService.get
     def payments(
         self,
-        order_id: APath[int],
-        # For GET, DELETE, OPTION, HEAD methods default field is Param,
-        # for POST, PATCH, PUT methods default field id Body
+        order_id: int,
         success_only: bool = False,
     ) -> schemas.GetPaymentsResponse: ...
 

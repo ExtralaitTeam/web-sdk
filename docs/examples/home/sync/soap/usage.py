@@ -1,5 +1,7 @@
+from decimal import Decimal
+
+from web_sdk.core.bases.soap import SoapFile
 from web_sdk.core.utils import make_client_factory
-from web_sdk.sdks.rest import get_res
 
 from .client import FooClient
 from .settings import FooSettings
@@ -17,11 +19,13 @@ client = client_factory()
 
 # Method response or error response if you use raise_exceptions=False
 # or None if you use skip_for_tests
-response = client.payments.get(
-    payment_id=1,
-    timeout=1,
-    raise_exceptions=False,
+response = client.payments.make(
+    order_id="123",
+    amount=Decimal("100"),
+    payment_file=SoapFile(
+        filename="payment.txt",
+        content_type="text/plain",
+        content=b"content",
+    ),
+    raise_exception=False,
 )
-
-result_or_none = get_res(response, required=False)
-result = get_res(response)

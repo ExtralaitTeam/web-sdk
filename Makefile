@@ -67,7 +67,7 @@ shell: .uv
 	uv run ipython
 
 .PHONY: all  ## Run the standard set of checks performed in CI
-all: lint typecheck codespell testcov
+all: lint typecheck codespell testcov embed-readme
 
 .PHONY: clean  ## Clear local caches and build artifacts
 clean:
@@ -93,9 +93,14 @@ clean:
 docs:
 	uv run mkdocs build --strict
 
-.PHONY: docs-serve
-docs-serve: ## Build and serve the documentation, for local preview
+.PHONY: docs-serve ## Build and serve the documentation, for local preview
+docs-serve:
 	uv run mkdocs serve --strict
+
+.PHONY: embed-readme ## Create README.md from README.template.md
+embed-readme:
+	npx -y embedme --stdout README.template.md > README.md
+	sed -i '1i # [//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing template file\)' README.md
 
 .PHONY: help  ## Display this message
 help:

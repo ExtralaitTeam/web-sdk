@@ -1,36 +1,33 @@
-from web_sdk.enums import HTTPMethod
-from web_sdk.sdks.rest import Method, Service
+from web_sdk.sdks.soap import Method, Service
 
 from . import schemas
 
 
 class PaymentsService(
     Service,
-    path="payments",
+    path="Payments",
     description="Payments service",
 ):
     get = Method[schemas.GetPaymentResponse](
-        path="{payment_id}",
+        path="getPayment",
         description="Get payment by id",
-    )  # full path is "{settings.url}/payments/{payment_id}"
+    )  # method path is "Payments.getPayment"
 
     make = Method[schemas.MakePaymentResponse](
-        method=HTTPMethod.POST,
-        path="make/{order_id}",
+        path="makePayment",
         description="Make payment for order",
-    )  # full path is "{settings.url}/payments/make/{order_id}"
+    )  # method path is "Payments.makePayment"
 
 
 class OrdersService(
     Service,
-    path="orders/{order_id}",
     description="Get order information by id",
 ):
     get = Method[schemas.GetOrderResponse](
         description="Get order information",
-    )  # full path is "{settings.url}/orders/{order_id}"
+    )  # method path is "get"
 
     payments = Method[schemas.GetPaymentsResponse](
-        path="payments",
+        path="paymentsWithPath",
         description="Get order payments",
-    )  # full path is "{settings.url}/orders/{order_id}/payments"
+    )  # method path is "paymentsWithPath"
