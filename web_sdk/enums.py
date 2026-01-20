@@ -1,7 +1,7 @@
 """Lib enums."""
 
 import logging
-from enum import Enum, IntEnum, auto
+from enum import Enum, IntEnum
 
 
 class TokenType(Enum):
@@ -9,7 +9,7 @@ class TokenType(Enum):
 
     TOKEN = "token"
     BEARER = "Bearer"
-    CUSTOM = auto()
+    CUSTOM = "custom"
 
 
 class HTTPMethod(str, Enum):
