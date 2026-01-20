@@ -1,7 +1,6 @@
 """Module with utils for working with SOAP files."""
 
 import base64
-import cgi
 import hashlib
 from functools import cached_property
 from typing import Any, Literal
@@ -11,6 +10,7 @@ from typing_extensions import Self
 from zeep.wsdl.attachments import Attachment
 
 from web_sdk.contrib.pydantic.model import PydanticModel
+from web_sdk.utils.cgi import parse_header
 from web_sdk.utils.uuid import get_uuid_chars
 
 
@@ -82,7 +82,7 @@ class SoapFile(PydanticModel):
         # get content type from attachment
         content_type = attachment.content_type.split(";")[0]
         # parse params from content disposition header
-        _, params = cgi.parse_header(attachment.headers.get("Content-Disposition", ""))
+        _, params = parse_header(attachment.headers.get("Content-Disposition", ""))
         # try to get filename
         filename = params.get("filename", "No name")
         # try to get extension from file name

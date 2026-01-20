@@ -1,4 +1,3 @@
-from cgi import parse_header
 from unittest.mock import MagicMock
 
 import pytest
@@ -7,6 +6,7 @@ from tests.clients.soap.clients import SoapTestClient
 from tests.clients.soap.methods import CommonService, FilesService
 from tests.clients.soap.types import FooData, FooNestedData
 from web_sdk.core.bases.soap import SoapFile
+from web_sdk.utils.cgi import parse_header
 
 NL = "\r\n"
 

@@ -190,6 +190,9 @@ source = ['web_sdk']
 branch = true
 relative_files = true
 context = '${CONTEXT}'
+omit = [
+    "web_sdk/utils/cgi.py",
+]
 
 [tool.pytest.ini_options]
 testpaths = 'tests'
