@@ -100,7 +100,7 @@ docs-serve:
 .PHONY: embed-readme ## Create README.md from README.template.md
 embed-readme:
 	npx -y embedme --stdout README.template.md > README.md
-	sed -i '1i # [//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing template file\)' README.md
+	sed -i '1i [//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing template file\)' README.md
 
 .PHONY: help  ## Display this message
 help:
