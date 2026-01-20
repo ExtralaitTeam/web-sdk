@@ -1,4 +1,4 @@
-# [//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing template file)
+[//]: # (DO NOT CHANGE THIS FILE MANUALLY. Use "make embed-readme" after changing template file)
 <p align="center">
   <img src="docs/resources/brand.svg" width="100%" alt="Web SDK">
 </p>
