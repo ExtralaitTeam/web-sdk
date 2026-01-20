@@ -9,8 +9,8 @@ from web_sdk.core.bases.soap import BaseSoapClient
 from web_sdk.types import TClient, TExtras
 
 from ..sessions import RequestsSessionMixin
-from ..settings import RequestsSoapSettings
 from .kwargs import SoapRequestsKwargs
+from .settings import RequestsSoapSettings
 
 if TYPE_CHECKING:
     TSettings = TypeVar("TSettings", bound=RequestsSoapSettings)

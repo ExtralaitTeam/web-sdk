@@ -6,18 +6,31 @@
     <em>WebSDK is a library for quickly and easily creating SDKs for integration with third-party APIs.</em>
 </p>
 
-## Supported backends
+# Installation
+
+**REST installation**
+
+Install using `pip install -U web-sdk[rest]` or `uv add web-sdk[rest]`
+
+If you want to use `web_sdk.sdks.rest.XmlResponse`
+Install using `pip install -U web-sdk[rest,xml]` or `uv add web-sdk[rest,xml]`
+
+**SOAP installation**
+
+Install using `pip install -U web-sdk[soap]` or `uv add web-sdk[soap]`
+
+# Supported backends
 
 
-### Sync backends
+## Sync backends
 
 
-#### Requests REST
+### Requests REST
 
 
 Client and utils for declare the sync SDK based on [requests](https://github.com/psf/requests).
 
-##### Declare custom or use default settings
+#### Declare custom or use default settings
 ```py
 # docs/examples/home/sync/rest/settings.py
 
@@ -42,7 +55,7 @@ class FooSettings(Settings):
 
 ```
 
-##### Create responses schemas
+#### Create responses schemas
 ```py
 # docs/examples/home/sync/rest/schemas.py
 
@@ -88,7 +101,7 @@ GetOrderResponse = JsonResponse[OrderInfoDTO]
 
 ```
 
-##### Declare services with methods for using in client
+#### Declare services with methods for using in client
 ```py
 # docs/examples/home/sync/rest/methods.py
 
@@ -131,7 +144,7 @@ class OrdersService(
 
 ```
 
-##### Declare client and client services
+#### Declare client and client services
 ```py
 # docs/examples/home/sync/rest/client.py
 
@@ -205,7 +218,7 @@ class FooClient(BaseFooClient):
 
 ```
 
-##### Usage example
+#### Usage example
 ```py
 # docs/examples/home/sync/rest/usage.py
 
@@ -239,12 +252,12 @@ result = get_res(response)
 
 ```
 
-#### Requests SOAP
+### Requests SOAP
 
 Client and utils for declare the sync SDK based on [requests](https://github.com/psf/requests), and [zeep](https://github.com/mvantellingen/python-zeep).
 
 
-##### Declare custom or use default settings
+#### Declare custom or use default settings
 ```py
 # docs/examples/home/sync/soap/settings.py
 
@@ -273,7 +286,7 @@ class FooSettings(Settings):
 
 ```
 
-##### Create responses schemas
+#### Create responses schemas
 ```py
 # docs/examples/home/sync/soap/schemas.py
 
@@ -332,7 +345,7 @@ GetOrderResponse = FooResponse[OrderInfoDTO]
 
 ```
 
-##### Declare services with methods for using in client
+#### Declare services with methods for using in client
 ```py
 # docs/examples/home/sync/soap/methods.py
 
@@ -372,7 +385,7 @@ class OrdersService(
 
 ```
 
-##### Declare client and client services
+#### Declare client and client services
 ```py
 # docs/examples/home/sync/soap/client.py
 
@@ -449,7 +462,7 @@ class FooClient(BaseFooClient):
 
 ```
 
-##### Usage example
+#### Usage example
 ```py
 # docs/examples/home/sync/soap/usage.py
 
@@ -487,17 +500,17 @@ response = client.payments.make(
 
 ```
 
-### Async backends
+## Async backends
 Planned...
 
 
-#### Httpx REST
+### Httpx REST
 
 
 Planned...
 
 
-#### Httpx SOAP
+### Httpx SOAP
 
 
 Planned...

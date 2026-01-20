@@ -9,7 +9,6 @@ import requests.models
 from pydantic import Field
 
 from web_sdk.core.bases import BaseSDKSettings
-from web_sdk.core.bases.soap.settings import BaseSoapSettings
 
 
 class RequestsSettings(BaseSDKSettings):
@@ -34,7 +33,3 @@ class RequestsSettings(BaseSDKSettings):
     """Max redirects count"""
     cookies: dict[str, str] = Field(default_factory=dict)
     """Cookies"""
-
-
-class RequestsSoapSettings(BaseSoapSettings, RequestsSettings):
-    """Base requests soap settings."""

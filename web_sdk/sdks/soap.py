@@ -10,7 +10,6 @@ __all__ = [
     "SoapFile",
 ]
 
-from web_sdk.core.backends.requests.settings import RequestsSoapSettings as Settings
 from web_sdk.core.backends.requests.soap import (
     SoapRequestsClient as Client,
 )
@@ -19,4 +18,5 @@ from web_sdk.core.backends.requests.soap import (
 )
 from web_sdk.core.backends.requests.soap import SoapRequestsMethod as Method
 from web_sdk.core.backends.requests.soap import SoapRequestsService as Service
+from web_sdk.core.backends.requests.soap.settings import RequestsSoapSettings as Settings
 from web_sdk.core.bases.soap import SoapFile, SoapResponse
