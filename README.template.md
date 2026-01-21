@@ -29,7 +29,6 @@
 </p>
 
 [//]: # ([![llms.txt]&#40;https://img.shields.io/badge/llms.txt-green&#41;]&#40;https://docs.pydantic.dev/latest/llms.txt&#41;)
-
 [//]: # ([![CondaForge]&#40;https://img.shields.io/conda/v/conda-forge/web-sdk.svg&#41;]&#40;https://anaconda.org/conda-forge/web-sdk&#41;)
 
 # Installation
