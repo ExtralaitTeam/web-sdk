@@ -40,9 +40,9 @@ dependencies = [
 dynamic = ['version', 'readme']
 
 [project.urls]
-Homepage = 'https://github.com/Extralait/web-sdk'
-Documentation = 'https://github.com/Extralait/web-sdk'
-Source = 'https://github.com/Extralait/web-sdk'
+Homepage = 'https://github.com/ExtralaitTeam/web-sdk'
+Documentation = 'https://github.com/ExtralaitTeam/web-sdk'
+Source = 'https://github.com/ExtralaitTeam/web-sdk'
 
 [project.optional-dependencies]
 xml = [
