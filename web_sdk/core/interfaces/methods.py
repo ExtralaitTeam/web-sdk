@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from functools import cached_property
-from typing import TYPE_CHECKING, Any, Generic, Protocol
+from typing import TYPE_CHECKING, Any, Concatenate, Generic, Protocol
 
 from typing_extensions import overload
 
-from web_sdk.types import P, TExtras, TKwargs, TResponse
+from web_sdk.types import P, PMethod, S, TExtras, TKwargs, TResponse
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -55,8 +55,8 @@ class IMethod(Generic[TResponse, TKwargs, TExtras], ABC):
 
     @abstractmethod
     def from_method(
-        self, method: Callable[P, Any], /, extras: TExtras | None = None, **kwargs: Any
-    ) -> Callable[P, TResponse]:
+        self, method: Callable[Concatenate[S, P], Any], /, extras: TExtras | None = None, **kwargs: Any
+    ) -> PMethod[P, TResponse]:
         """Make Method with getting signature from other method.
 
         Args:

@@ -5,13 +5,13 @@ from __future__ import annotations
 from abc import abstractmethod
 from functools import cached_property, partial, wraps
 from inspect import unwrap
-from typing import TYPE_CHECKING, Any, Protocol, cast
+from typing import TYPE_CHECKING, Any, Concatenate, Protocol, cast
 
 from typing_extensions import overload
 
 from web_sdk.core.fields.parts import RequestParts
 from web_sdk.core.interfaces import IMethod
-from web_sdk.types import P, TExtras, TKwargs, TResponse
+from web_sdk.types import P, PMethod, S, TExtras, TKwargs, TResponse
 from web_sdk.utils.dicts import merge_dicts
 from web_sdk.utils.url import join_path
 
@@ -147,8 +147,8 @@ class BaseMethod(IMethod[TResponse, TKwargs, TExtras]):
         return wrapper
 
     def from_method(
-        self, method: Callable[P, Any], /, extras: TExtras | None = None, **kwargs: Any
-    ) -> Callable[P, TResponse]:
+        self, method: Callable[Concatenate[S, P], Any], /, extras: TExtras | None = None, **kwargs: Any
+    ) -> PMethod[P, TResponse]:
         """Make Method with getting signature from other method.
 
         Args:

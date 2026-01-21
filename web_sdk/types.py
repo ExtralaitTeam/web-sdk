@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from web_sdk.enums import LogLevel
 
 T = TypeVar("T")
+S = TypeVar("S")
 P = ParamSpec("P")
 R = TypeVar("R", covariant=True)
 
@@ -63,3 +64,9 @@ else:
 PartsNames: TypeAlias = (
     Literal["paths", "body", "headers", "params", "files", "cookies", "kwargs", "extras", "settings"] | str
 )
+
+
+class PMethod(Protocol[P, TResponse]):
+    """Protocol for method."""
+
+    def __call__(self, *args: P.args, **kwargs: P.kwargs) -> TResponse: ...  # noqa

@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Generic, final
+from typing import TYPE_CHECKING, Any, Concatenate, Generic, final
 
 from typing_extensions import Unpack, overload
 
 from web_sdk.core.bases.rest import RestMethod
-from web_sdk.types import P, TExtras, TResponse
+from web_sdk.types import P, PMethod, S, TExtras, TResponse
 
 from .kwargs import RestRequestsKwargsWithSettings
 
@@ -82,11 +82,11 @@ class RestRequestsMethod(RestMethod[TResponse, RestRequestsKwargsWithSettings, T
 
         def from_method(
             self,
-            method: Callable[P, Any],
+            method: Callable[Concatenate[S, P], Any],
             /,
             extras: TExtras | None = None,
             **kwargs: Unpack[RestRequestsKwargsWithSettings],
-        ) -> Callable[P, TResponse]:  # pyright: ignore [reportReturnType]
+        ) -> PMethod[P, TResponse]:  # pyright: ignore [reportReturnType]
             """Make Method with getting signature from other method.
 
             Args:

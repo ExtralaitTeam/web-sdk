@@ -212,6 +212,7 @@ exclude_lines = [
     '@overload',
     '@typing.overload',
     '\(Protocol\):$',
+    '\(Protocol\[(.)+\]\):$',
     'typing.assert_never',
     'assert_never',
 ]
