@@ -2,11 +2,11 @@ site_name: Web SDK
 site_description: "WebSDK is a library for quickly and easily creating SDKs for integration with third-party APIs."
 site_author: "Extralait"
 site_url: ""
-repo_name: extralait/web-sdk
-repo_url: https://github.com/extralait/web-sdk
+repo_name: ExtralaitTeam/web-sdk
+repo_url: https://github.com/ExtralaitTeam/web-sdk
 extra_css:
   - stylesheets/extra.css
-edit_uri: edit/main/docs/
+edit_uri: edit/master/docs/
 extra:
   version:
     provider: mike
