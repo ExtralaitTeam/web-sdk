@@ -1,3 +1,6 @@
+# v0.1.3
+* Add docs
+
 # v0.1.2
 * Add minimal docs
 
